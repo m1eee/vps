@@ -1,0 +1,12 @@
+[Unit]
+Description=Private VPN C exit
+After=network-online.target systemd-resolved.service
+Wants=network-online.target
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/sing-box run -c /etc/private-vpn/c.json
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65536
+[Install]
+WantedBy=multi-user.target

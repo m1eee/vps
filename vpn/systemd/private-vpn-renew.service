@@ -1,0 +1,6 @@
+[Unit]
+Description=Renew the private VPN public IP certificate
+After=network-online.target
+[Service]
+Type=oneshot
+ExecStart=/root/workspace/vpn/.state/certbot/bin/certbot renew --quiet --deploy-hook "/usr/sbin/nginx -s reload"

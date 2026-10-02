@@ -1,0 +1,13 @@
+[Unit]
+Description=Private VPN B global AI routing
+After=network-online.target systemd-resolved.service
+Wants=network-online.target
+[Service]
+Type=simple
+WorkingDirectory=/root/workspace/vpn
+ExecStart=/usr/local/bin/sing-box run -c /root/workspace/vpn/.generated/b.json
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65536
+[Install]
+WantedBy=multi-user.target
